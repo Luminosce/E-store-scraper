@@ -1,5 +1,4 @@
 require 'colorize'
-require 'pry'
 
 # This looks like the user interface
 class Interface

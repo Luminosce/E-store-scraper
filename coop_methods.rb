@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
-require 'pry'
 
 class MakeResults
   # Incase you haven't seen this syntax yet for arguments: 
