@@ -1,44 +1,46 @@
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
+require 'pry'
 
-def run_coop_search
-  search_input_converted_for_coop = $search_input.split(' ').join('+')
-  coop_search_url =  "https://ecoop.ee/et/otsing/?otsing=" + search_input_converted_for_coop
-  # When using special characters in the search input (ö, ä, ü, õ),
-  # using only 'Nokogiri::HTML(open($coop_search_url))' here
-  # returns some kind of encoding error instead of the internal server error I'm currently getting'
-  coop_search_page = Nokogiri::HTML(open(URI.parse(URI.escape(coop_search_url))))
-  $coop_results_name = coop_search_page.css('div.item-name') # These are the found product names
-  $coop_results_price = coop_search_page.css('div.item-count') # These are the found product prices
-end
-
-def determine_coop_results_to_display
-  if $max_results_input > $coop_results_name.length
-    $coop_results_to_display = $coop_results_name.length
-  else
-    $coop_results_to_display = $max_results_input
+class MakeResults
+  # Incase you haven't seen this syntax yet for arguments: 
+  # these are called named arguments and they are nice because the 
+  # order of the arguments doesn't matter
+  def self.forCoop(names:, prices:)
+    grouped_coop_results = {}
+    for i in 0...names.length do
+      # Occasionally throws errors where using .text here:
+      grouped_coop_results[names[i].text] = [prices[i].text.split(' · ')[1].split('€')[0].to_f,
+                                                  (' €' + (prices[i]).text.split(' · ')[1].split('€')[1])]
+    end
+    grouped_coop_results
   end
 end
 
-def group_coop_results
-  $grouped_coop_results = {}
-  for i in 0...$coop_results_to_display do
-    # Occasionally throws errors where using .text here:
-    $grouped_coop_results[$coop_results_name[i].text] = [$coop_results_price[i].text.split(' · ')[1].split('€')[0].to_f,
-                                               (' €' + ($coop_results_price[i]).text.split(' · ')[1].split('€')[1])]
+class Search
+  def self.coop(query, max_results)
+    page = Nokogiri::HTML(URI.open(BuildSearchUrl.forCoop(query)))
+    names = page.css("div.item-name")[0..max_results-1]
+    prices =  page.css("div.item-count")[0..max_results-1]
+    # Named arguments
+    # can also write like this:
+    # MakeResults.forCoop({names: names, prices: prices})
+    MakeResults.forCoop(names: names, prices: prices)
   end
 end
 
+class BuildSearchUrl
+  COOP_BASE_URL = "https://ecoop.ee/et/otsing/"
+
+  def self.forCoop(query)
+    url = URI(COOP_BASE_URL)
+    url.query = URI.encode_www_form([["otsing", query ]])
+    url
+  end
+end
+# This looks like a common method for normalized results.
 def sort_coop_results
   $sorted_coop_results = $grouped_coop_results.sort_by {|key, value| value[0]}.to_h
 end
 
-def display_coop_results
-  display_results_listing_text($coop_results_to_display)
-  $sorted_coop_results.each {|key, value|
-      puts key
-      puts value[0].to_s + value[1]
-      puts ''
-    }
-end
