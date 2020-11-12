@@ -1,16 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    colorize (0.8.1)
     mini_portile2 (2.4.0)
+    nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.10-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     open-uri (0.1.0)
     uri (0.10.0)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
+  colorize
   nokogiri
   open-uri
   uri
