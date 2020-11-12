@@ -21,7 +21,7 @@ class Interface
     end
     max_results_input
   end
-  
+
   def display_results(determined_results_to_display, results)
     puts("")
     puts("Displaying #{determined_results_to_display} first item(s) in results, ordered by price (ascending):".colorize(:cyan))
@@ -34,4 +34,6 @@ class Interface
   end
 end
 
-
+def sort_results(grouped_results)
+  grouped_results.sort_by {|key, value| value[0]}.to_h
+end

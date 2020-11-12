@@ -6,6 +6,7 @@ interface = Interface.new
 loop do
   query = interface.get_search_input
   max_results = interface.get_max_results_input
-  results = Search.coop(query, max_results)
-  interface.display_results(max_results, results)
+  coop_results = Search.coop(query, max_results)
+  sorted_coop_results = sort_results(coop_results)
+  interface.display_results(max_results, sorted_coop_results)
 end

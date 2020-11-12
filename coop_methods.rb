@@ -3,8 +3,8 @@ require 'open-uri'
 require 'uri'
 
 class MakeResults
-  # Incase you haven't seen this syntax yet for arguments: 
-  # these are called named arguments and they are nice because the 
+  # Incase you haven't seen this syntax yet for arguments:
+  # these are called named arguments and they are nice because the
   # order of the arguments doesn't matter
   def self.forCoop(names:, prices:)
     grouped_coop_results = {}
@@ -38,8 +38,3 @@ class BuildSearchUrl
     url
   end
 end
-# This looks like a common method for normalized results.
-def sort_coop_results
-  $sorted_coop_results = $grouped_coop_results.sort_by {|key, value| value[0]}.to_h
-end
-
