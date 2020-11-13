@@ -1,6 +1,5 @@
 require 'colorize'
 
-# This looks like the user interface
 class Interface
   def get_search_input
     puts("")
