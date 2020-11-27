@@ -1,0 +1,5 @@
+require 'colorize'
+require 'nokogiri'
+require 'open-uri'
+require 'selenium-webdriver'
+require 'uri'

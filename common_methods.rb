@@ -1,5 +1,3 @@
-require 'colorize'
-
 class Interface
   def get_search_input
     puts("")

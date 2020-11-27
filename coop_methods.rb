@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'uri'
-
 class MakeResults
   def self.forCoop(names:, prices:)
     grouped_coop_results = {}
