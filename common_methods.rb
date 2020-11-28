@@ -23,9 +23,9 @@ class Interface
     puts ''
     puts ''
     puts ''
-    puts("Displaying #{limited_sorted_results.length} lowest-priced item(s) from retrieved results, ordered by price (ascending):".colorize(:cyan))
+    puts("Displaying #{limited_sorted_results.length} lowest-priced item(s) from retrieved results, ordered by price (ascending):".colorize(:color => :cyan, :background => :black))
     puts ''
-    puts '--Start of list--'
+    puts '--Start of list--'.colorize(:color => :cyan, :background => :black)
     puts ''
     limited_sorted_results.each do |key, value|
       if key.include? 'Coop'
@@ -37,23 +37,27 @@ class Interface
         puts (value[0].to_s + value[1]).colorize(:green)
         puts ''
       elsif key.include? 'Selver'
+        puts key
+        puts (value[0].to_s + value[1])
+        puts ''
+      elsif key.include? 'Rimi'
         puts key.colorize(:red)
         puts (value[0].to_s + value[1]).colorize(:red)
         puts ''
       end
     end
-    puts '--End of list--'
+    puts '--End of list--'.colorize(:color => :cyan, :background => :black)
     puts ''
     puts ''
   end
 end
 
-def combine_results(coop_results = {}, prisma_results = {}, selver_results = {})
+def combine_results(coop_results = {}, prisma_results = {}, selver_results = {}, rimi_results = {})
   puts ""
-  puts "Total results retrieved: #{coop_results.length + prisma_results.length + selver_results.length}."
+  puts "Total results retrieved: #{coop_results.length + prisma_results.length + selver_results.length + rimi_results.length}."
   puts ""
   puts "Combining all retrieved results..."
-  combined_results = coop_results.merge(prisma_results, selver_results)
+  combined_results = coop_results.merge(prisma_results, selver_results, rimi_results)
 end
 
 def sort_and_limit_results(grouped_results, max_results)
