@@ -2,8 +2,8 @@ class MakeResults
   def self.forCoop(names:, prices:)
     grouped_coop_results = {}
     for i in 0...names.length do
-      grouped_coop_results[names[i].text] = [prices[i].text.split(' · ')[1].split('€')[0].to_f,
-                                                  (' €' + (prices[i]).text.split(' · ')[1].split('€')[1])]
+      grouped_coop_results['Coop: ' + names[i].text] = [prices[i].text.split(' · ')[1].split('€')[0].to_f,
+                                             (' €' + (prices[i]).text.split(' · ')[1].split('€')[1])]
     end
     grouped_coop_results
   end
@@ -11,10 +11,18 @@ end
 
 class Search
   def self.coop(query, max_results)
-    page = Nokogiri::HTML(URI.open(BuildSearchUrl.forCoop(query)))
-    names = page.css("div.item-name")[0..max_results-1]
-    prices =  page.css("div.item-count")[0..max_results-1]
-    MakeResults.forCoop(names: names, prices: prices)
+    puts ""
+    puts "Retrieving first #{max_results} results from Coop..."
+    begin
+      page = Nokogiri::HTML(URI.open(BuildSearchUrl.forCoop(query)))
+      names = page.css("div.item-name")[0..max_results-1]
+      prices =  page.css("div.item-count")[0..max_results-1]
+      MakeResults.forCoop(names: names, prices: prices)
+    rescue NoMethodError
+      puts ''
+      puts 'No such items found for Coop.'
+      coop_results = {}
+    end
   end
 end
 

@@ -10,4 +10,6 @@
 
 `bundle install`
 
+### Get ChromeDriver from https://chromedriver.chromium.org/
+
 ### Run the program from `scraper.rb`
