@@ -1,6 +1,6 @@
 # E-store scraper
 
-## Simple Ruby-based program for scraping Coop, Prisma (not implemented), Selver (not implemented) websites for product names and prices
+## Simple Ruby-based program for scraping Coop, Prisma, Selver, and Rimi websites for product names and prices
 
 ### To run this program you need to have `ruby` set up, you also need bundler gem:
 
