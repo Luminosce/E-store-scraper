@@ -5,7 +5,7 @@ require_relative 'prisma_methods.rb'
 require_relative 'selver_methods.rb'
 require_relative 'rimi_methods.rb'
 
-interface = Interface.new
+interface = Single_Search_Interface.new
 
 loop do
   query = interface.get_search_input

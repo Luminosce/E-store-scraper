@@ -1,4 +1,4 @@
-class Interface
+class Single_Search_Interface
   def get_search_input
     puts("")
     puts("Enter search term(s).".colorize(:green))
