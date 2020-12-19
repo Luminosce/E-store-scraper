@@ -7,3 +7,6 @@ gem 'open-uri'
 gem 'colorize'
 gem 'uri'
 gem 'selenium-webdriver'
+gem 'sinatra'
+gem 'rerun'
+

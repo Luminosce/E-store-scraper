@@ -66,3 +66,21 @@ def sort_and_limit_results(grouped_results, max_results)
   sorted_results = grouped_results.sort_by {|key, value| value[0]}.to_h
   limited_sorted_results = sorted_results.to_a[0...max_results].to_h
 end
+
+class WebInterface
+  def self.searchForm
+      "<form method='post' style='margin: 20px auto; width: 50%'>
+      <h1>Mille hinda soovid teada?</h1>
+      <input type='text' name='product' />
+      <input style='color:blue;' type='submit' value='Otsi' />
+      </form>"
+  end
+
+  def self.searchResults(results)
+    htmlResults = results.map do|(name, price)|
+      "<div><h3>#{name}</h3><p>#{price.join(' ')}</p></div>"
+    end
+
+    "<div style='margin: 20px auto;  width: 50%'><h1>Otsingu tulemused</h1>#{htmlResults.join(' ')}</div>"
+  end
+end
