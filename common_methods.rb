@@ -84,3 +84,38 @@ class WebInterface
     "<div style='margin: 20px auto;  width: 50%'><h1>Otsingu tulemused</h1>#{htmlResults.join(' ')}</div>"
   end
 end
+
+class List_Search_Interface
+    def build_search_list
+        search_list = []
+        search_initiated = false
+        while search_initiated == false
+            puts ""
+            puts "Enter items to add to search list, enter '=' to initiate search, or enter 'reset' to reset the list".colorize(:green))
+            input = gets.chomp
+            if input == 'reset'
+                search_list = []
+            elsif input == '='
+                search_initiated = true
+            else
+                search_list.push(input)
+                puts "Items currently in search list: #{search_list}"
+            end
+        end
+        search_list
+    end
+
+    def get_max_results_input
+        max_results_input = nil
+        while(max_results_input.nil? || max_results_input < 1)
+          puts("")
+          puts("Enter maximum number of results to look at for each searched vendor. Must be at least 1.".colorize(:green))
+          max_results_input = gets.chomp.to_i
+          if max_results_input < 1
+            puts("")
+            puts("Invalid input.".colorize(:red))
+          end
+        end
+        max_results_input
+      end
+end
