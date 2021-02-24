@@ -17,10 +17,12 @@ class Search
       page = Nokogiri::HTML(URI.open(BuildSearchUrl.forSelver(query)))
       names = page.css("h5.product-name")[0..max_results-1]
       prices =  page.css("span.unit-price")[0..max_results-1]
+      if names.length == 0
+        puts ''
+        puts "No such items found for Selver.".colorize(:red)
+      end
       MakeResults.forSelver(names: names, prices: prices)
     rescue NoMethodError
-      puts ''
-      puts 'No such items found for Selver.'
       selver_results = {}
     end
   end

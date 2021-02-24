@@ -36,7 +36,7 @@ class Search
       MakeResults.forPrisma(names: names, prices: prices)
     rescue NoMethodError
       puts ''
-      puts 'No such items found for Prisma.'
+      puts "No such items found for Prisma.".colorize(:red)
       prisma_results = {}
     end
   end

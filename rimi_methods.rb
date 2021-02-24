@@ -17,10 +17,12 @@ class Search
       page = Nokogiri::HTML(URI.open(BuildSearchUrl.forRimi(query)))
       names = page.css("p.card__name")[0..max_results-1]
       prices =  page.css("p.card__price-per")[0..max_results-1]
+      if names.length == 0
+        puts ''
+        puts "No such items found for Rimi.".colorize(:red)
+      end
       MakeResults.forRimi(names: names, prices: prices)
     rescue NoMethodError
-      puts ''
-      puts 'No such items found for Rimi.'
       rimi_results = {}
     end
   end

@@ -91,7 +91,7 @@ class List_Search_Interface
         search_initiated = false
         while search_initiated == false
             puts ""
-            puts "Enter items to add to search list, enter '=' to initiate search, or enter 'reset' to reset the list".colorize(:green))
+            puts "Enter items to add to search list, enter '=' to initiate search, or enter 'reset' to reset the list".colorize(:green)
             input = gets.chomp
             if input == 'reset'
                 search_list = []
