@@ -2,8 +2,8 @@ class MakeResults
   def self.forSelver(names:, prices:)
     grouped_selver_results = {}
     for i in 0...names.length do
-      grouped_selver_results['Selver: ' + names[i].text] = [prices[i].text.split(' ')[0].gsub(',', '.').to_f,
-                                               (' ' + (prices[i]).text.split(' ')[1])]
+      grouped_selver_results['Selver: ' + names[i]] = [prices[i].split(' ')[0].gsub(',', '.').to_f,
+                                               (' ' + (prices[i]).split(' ')[1])]
     end
     grouped_selver_results
   end
@@ -11,20 +11,44 @@ end
 
 class Search
   def self.selver(query, max_results)
+    names = Array.new
+    prices = Array.new
     puts ""
-    puts "Retrieving first #{max_results} results from Selver..."
+    puts "Attempting to retrieve first #{max_results} results from Selver..."
+    options = Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'log-level=2'])
+    driver = Selenium::WebDriver.for(:chrome, options: options)
+    url = BuildSearchUrl.forSelver(query)
+    driver.get(url)
+
     begin
-      page = Nokogiri::HTML(URI.open(BuildSearchUrl.forSelver(query)))
-      names = page.css("h5.product-name")[0..max_results-1]
-      prices =  page.css("span.unit-price")[0..max_results-1]
-      if names.length == 0
-        puts ''
-        puts "No such items found for Selver.".colorize(:red)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 1)
+      wait.until { driver.find_element(:css, "span.unit-price") }
+
+      for i in 0...max_results do
+        name_element = driver.find_elements(:css, "h5.product-name")[i]
+        price_element = driver.find_elements(:css, "span.unit-price")[i]
+        if name_element && price_element
+          name = name_element.text
+          names.push(name)
+          price = price_element.text
+          prices.push(price)
+        end
       end
-      MakeResults.forSelver(names: names, prices: prices)
-    rescue NoMethodError
-      selver_results = {}
+
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue Selenium::WebDriver::Error::TimeoutError
     end
+
+    if names.length == 0
+      puts ""
+      puts "No such items found for Selver.".colorize(:red)
+    else
+      puts ""
+      puts "Successfully Retrieved #{names.length} result(s) from Selver.".colorize(:cyan)
+    end
+
+    driver.quit
+    MakeResults.forSelver(names: names, prices: prices)
   end
 end
 
