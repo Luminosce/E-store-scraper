@@ -9,7 +9,7 @@ class Single_Search_Interface
     max_retrieve_input = nil
     while(max_retrieve_input.nil? || max_retrieve_input < 1)
       puts("")
-      puts("Enter maximum number of results to retrieve from each store. Must be at least 1.".colorize(:green))
+      puts("Enter maximum number of results to retrieve for sorting from each store. Must be at least 1.".colorize(:green))
       max_retrieve_input = gets.chomp.to_i
       if max_retrieve_input < 1
         puts("")
@@ -21,13 +21,20 @@ class Single_Search_Interface
 
   def get_max_display_input
     max_display_input = nil
-    while(max_display_input.nil? || max_display_input < 1)
+    while(max_display_input.nil?)
       puts("")
-      puts("Enter maximum number of combined results to display. Must be at least 1.".colorize(:green))
-      max_display_input = gets.chomp.to_i
-      if max_display_input < 1
-        puts("")
-        puts("Invalid input.".colorize(:red))
+      puts("Enter maximum number of results to display after sorting. Must be at least 1.".colorize(:green))
+      puts("To display all retrieved results, enter 'all'.".colorize(:green))
+      max_display_input = gets.chomp
+      if max_display_input.downcase == "all"
+        max_display_input = max_display_input.downcase
+      else
+        max_display_input = max_display_input.to_i
+        if max_display_input < 1
+          puts("")
+          puts("Invalid input.".colorize(:red))
+          max_display_input = nil
+        end
       end
     end
     max_display_input
@@ -78,7 +85,12 @@ def sort_and_limit_results(grouped_results, max_display)
   puts ""
   puts "Sorting combined results by price and limiting to the specified number..."
   sorted_results = grouped_results.sort_by {|key, value| value[0]}.to_h
-  limited_sorted_results = sorted_results.to_a[0...max_display].to_h
+  if max_display == "all"
+    limited_sorted_results = sorted_results
+  else
+    limited_sorted_results = sorted_results.to_a[0...max_display].to_h
+  end
+  limited_sorted_results
 end
 
 class WebInterface

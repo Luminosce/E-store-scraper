@@ -56,7 +56,7 @@ class Search
       puts "No such items found for Selver.".colorize(:red)
     else
       puts ""
-      puts "Successfully Retrieved #{names.length} result(s) from Selver.".colorize(:cyan)
+      puts "Successfully retrieved #{names.length} result(s) from Selver.".colorize(:cyan)
     end
 
     driver.quit
