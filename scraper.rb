@@ -9,12 +9,13 @@ interface = Single_Search_Interface.new
 
 loop do
   query = interface.get_search_input
-  max_results = interface.get_max_results_input
-  coop_results = Search.coop(query, max_results)
-  prisma_results = Search.prisma(query, max_results)
-  selver_results = Search.selver(query, max_results)
-  rimi_results = Search.rimi(query, max_results)
+  max_retrieve = interface.get_max_retrieve_input
+  max_display = interface.get_max_display_input
+  coop_results = Search.coop(query, max_retrieve)
+  prisma_results = Search.prisma(query, max_retrieve)
+  selver_results = Search.selver(query, max_retrieve)
+  rimi_results = Search.rimi(query, max_retrieve)
   combined_results = combine_results(coop_results, prisma_results, selver_results, rimi_results)
-  limited_sorted_results = sort_and_limit_results(combined_results, max_results)
+  limited_sorted_results = sort_and_limit_results(combined_results, max_display)
   interface.display_results(limited_sorted_results)
 end

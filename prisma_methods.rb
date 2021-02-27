@@ -13,11 +13,13 @@ class Search
 
   # Prisma's website is weird and badly organised for scraping:
   # Search for 'õun', 'tomat', 'viinamari', 'and saib' on the website and compare to see what I mean.
-  def self.prisma(query, max_results)
+  def self.prisma(query, max_retrieve)
     names = Array.new
     prices = Array.new
+    names_low_relevance = Array.new
+    prices_low_relevance = Array.new
     puts ""
-    puts "Attempting to retrieve first #{max_results} results from Prisma..."
+    puts "Attempting to retrieve first #{max_retrieve} results from Prisma..."
     options = Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'log-level=2'])
     driver = Selenium::WebDriver.for(:chrome, options: options)
     url = BuildSearchUrl.forPrisma(query)
@@ -26,14 +28,19 @@ class Search
     begin
       wait = Selenium::WebDriver::Wait.new(:timeout => 1)
       wait.until { driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(1) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price") }
-      for i in 0...max_results do
+      for i in 0...max_retrieve do
         name_element = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.name")
         price_element = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price")
         if name_element.displayed? && price_element.displayed? && (price_element.attribute("hidden") == nil) # Skipping Prisma's hidden price elements because lazy
           name = name_element.text
-          names.push(name)
           price = price_element.text
-          prices.push(price)
+          if name.downcase.include? query.downcase
+            names.push(name)
+            prices.push(price)
+          else
+            names_low_relevance.push(name)
+            prices_low_relevance.push(price)
+          end
         end
       end
     rescue Selenium::WebDriver::Error::NoSuchElementError
@@ -41,21 +48,31 @@ class Search
     end
 
     begin
-      if names.length < max_results
+      if names.length < max_retrieve
         wait.until { driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(1) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price") }
-        for i in 0...(max_results - names.length) do
+        for i in 0...(max_retrieve - names.length) do
           name_element = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.name")
           price_element = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price")
           if name_element.displayed? && price_element.displayed? && (price_element.attribute("hidden") == nil) # Skipping Prisma's hidden elements because lazy
             name = name_element.text
-            names.push(name)
             price = price_element.text
-            prices.push(price)
+            if name.downcase.include? query.downcase
+              names.push(name)
+              prices.push(price)
+            else
+              names_low_relevance.push(name)
+              prices_low_relevance.push(price)
+            end
           end
         end
       end
     rescue Selenium::WebDriver::Error::NoSuchElementError
     rescue Selenium::WebDriver::Error::TimeoutError
+    end
+
+    if names.length == 0 && names_low_relevance.length != 0
+      names.concat names_low_relevance
+      prices.concat prices_low_relevance
     end
 
     if names.length == 0

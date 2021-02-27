@@ -5,18 +5,32 @@ class Single_Search_Interface
     gets.chomp
   end
 
-  def get_max_results_input
-    max_results_input = nil
-    while(max_results_input.nil? || max_results_input < 1)
+  def get_max_retrieve_input
+    max_retrieve_input = nil
+    while(max_retrieve_input.nil? || max_retrieve_input < 1)
       puts("")
-      puts("Enter maximum number of results to display. Must be at least 1.".colorize(:green))
-      max_results_input = gets.chomp.to_i
-      if max_results_input < 1
+      puts("Enter maximum number of results to retrieve from each store. Must be at least 1.".colorize(:green))
+      max_retrieve_input = gets.chomp.to_i
+      if max_retrieve_input < 1
         puts("")
         puts("Invalid input.".colorize(:red))
       end
     end
-    max_results_input
+    max_retrieve_input
+  end
+
+  def get_max_display_input
+    max_display_input = nil
+    while(max_display_input.nil? || max_display_input < 1)
+      puts("")
+      puts("Enter maximum number of combined results to display. Must be at least 1.".colorize(:green))
+      max_display_input = gets.chomp.to_i
+      if max_display_input < 1
+        puts("")
+        puts("Invalid input.".colorize(:red))
+      end
+    end
+    max_display_input
   end
 
   def display_results(limited_sorted_results)
@@ -60,11 +74,11 @@ def combine_results(coop_results = {}, prisma_results = {}, selver_results = {},
   combined_results = coop_results.merge(prisma_results, selver_results, rimi_results)
 end
 
-def sort_and_limit_results(grouped_results, max_results)
+def sort_and_limit_results(grouped_results, max_display)
   puts ""
-  puts "Sorting results by price and limiting to the specified number..."
+  puts "Sorting combined results by price and limiting to the specified number..."
   sorted_results = grouped_results.sort_by {|key, value| value[0]}.to_h
-  limited_sorted_results = sorted_results.to_a[0...max_results].to_h
+  limited_sorted_results = sorted_results.to_a[0...max_display].to_h
 end
 
 class WebInterface
@@ -105,17 +119,17 @@ class List_Search_Interface
         search_list
     end
 
-    def get_max_results_input
-        max_results_input = nil
-        while(max_results_input.nil? || max_results_input < 1)
+    def get_max_retrieve_input
+        max_retrieve_input = nil
+        while(max_retrieve_input.nil? || max_retrieve_input < 1)
           puts("")
-          puts("Enter maximum number of results to look at for each searched vendor. Must be at least 1.".colorize(:green))
-          max_results_input = gets.chomp.to_i
-          if max_results_input < 1
+          puts("Enter maximum number of results to retrieve from each store. Must be at least 1.".colorize(:green))
+          max_retrieve_input = gets.chomp.to_i
+          if max_retrieve_input < 1
             puts("")
             puts("Invalid input.".colorize(:red))
           end
         end
-        max_results_input
+        max_retrieve_input
       end
 end
