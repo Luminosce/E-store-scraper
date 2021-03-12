@@ -19,7 +19,7 @@ class Search
     names_low_relevance = Array.new
     prices_low_relevance = Array.new
     puts ""
-    puts "Attempting to retrieve first #{max_retrieve} results from Prisma..."
+    puts "Attempting to retrieve first #{max_retrieve} results from Prisma for item '#{query}'..."
     options = Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'log-level=2'])
     driver = Selenium::WebDriver.for(:chrome, options: options)
     url = BuildSearchUrl.forPrisma(query)
@@ -56,10 +56,10 @@ class Search
           if name_element.displayed? && price_element.displayed? && (price_element.attribute("hidden") == nil) # Skipping Prisma's hidden elements because lazy
             name = name_element.text
             price = price_element.text
-            if name.downcase.include? query.downcase
+            if (name.downcase.include? query.downcase) && price != ""
               names.push(name)
               prices.push(price)
-            else
+            elsif price != ""
               names_low_relevance.push(name)
               prices_low_relevance.push(price)
             end
@@ -71,8 +71,12 @@ class Search
     end
 
     if names.length == 0 && names_low_relevance.length != 0
-      names.concat names_low_relevance
-      prices.concat prices_low_relevance
+      for i in 0...max_retrieve do
+        if names_low_relevance[i] != nil && prices_low_relevance[i] != nil
+          names.push(names_low_relevance[i])
+          prices.push(prices_low_relevance[i])
+        end
+      end
     end
 
     if names.length == 0
