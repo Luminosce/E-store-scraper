@@ -31,13 +31,26 @@ class Search
       for i in 0...max_retrieve do
         name_element = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.name")
         price_element = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price")
-        if name_element.displayed? && price_element.displayed? && (price_element.attribute("hidden") == nil) # Skipping Prisma's hidden price elements because lazy
+        if name_element.displayed? && price_element.displayed?  # To handle hidden price elements separately
           name = name_element.text
           price = price_element.text
-          if name.downcase.include? query.downcase
+          if (name.downcase.include? query.downcase) && price != ""
             names.push(name)
             prices.push(price)
-          else
+          elsif price != ""
+            names_low_relevance.push(name)
+            prices_low_relevance.push(price)
+          end
+        elsif name_element.displayed? # Hidden price elements handled here
+          price_element_1 = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.whole-number")
+          price_element_2 = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.decimal")
+          price_element_3 = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.unit")
+          name = name_element.text
+          price = price_element_1.text + "," + price_element_2.text + " €" + price_element_3.text
+          if (name.downcase.include? query.downcase) && price.length > 3
+            names.push(name)
+            prices.push(price)
+          elsif price.length > 3
             names_low_relevance.push(name)
             prices_low_relevance.push(price)
           end
@@ -53,13 +66,26 @@ class Search
         for i in 0...(max_retrieve - names.length) do
           name_element = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.name")
           price_element = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price")
-          if name_element.displayed? && price_element.displayed? && (price_element.attribute("hidden") == nil) # Skipping Prisma's hidden elements because lazy
+          if name_element.displayed? && price_element.displayed? # To handle hidden price elements separately
             name = name_element.text
             price = price_element.text
             if (name.downcase.include? query.downcase) && price != ""
               names.push(name)
               prices.push(price)
             elsif price != ""
+              names_low_relevance.push(name)
+              prices_low_relevance.push(price)
+            end
+          elsif name_element.displayed? # Hidden price elements handled here
+            price_element_1 = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.whole-number")
+            price_element_2 = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.decimal")
+            price_element_3 = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.unit")
+            name = name_element.text
+            price = price_element_1.text + "," + price_element_2.text + " €" + price_element_3.text
+            if (name.downcase.include? query.downcase) && price.length > 3
+              names.push(name)
+              prices.push(price)
+            elsif price.length > 3
               names_low_relevance.push(name)
               prices_low_relevance.push(price)
             end
