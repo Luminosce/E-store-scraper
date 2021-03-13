@@ -187,7 +187,7 @@ class List_Search_Interface
           quantity_entered = false
           while quantity_entered == false
             puts ""
-            puts "Enter quantity for item '#{item}' in grams or millilitres, or enter 'reset' to reset the list of quantities.".colorize(:green)
+            puts "Enter quantity for item '#{item}' in grams or millilitres (or pieces for, e.g., eggs), or enter 'reset' to reset the list of quantities.".colorize(:green)
             quantity_input = gets.chomp
             if quantity_input == 'reset'
               quantities_list = []
@@ -201,7 +201,7 @@ class List_Search_Interface
               quantities_list.push(quantity_input.to_i)
               quantity_entered = true
               puts ""
-              puts "Quantity '#{quantity_input} (g or ml)' successfully added for item '#{item}'.".colorize(:cyan)
+              puts "Quantity '#{quantity_input} (g, ml, or pcs)' successfully added for item '#{item}'.".colorize(:cyan)
             end
           end
         end
@@ -394,9 +394,15 @@ def calculate_totals(cheapest_items, quantities_list)
   shopping_cart_total = 0
   if cheapest_items.length == quantities_list.length
     cheapest_items.each do |key, value|
-      item_quantity_price = value[0] * quantities_list[i]/1000
-      shopping_cart_total += item_quantity_price
-      i += 1
+      if value[1] == '€/tk' || value[1] == '€/pcs'
+        item_quantity_price = value[0] * quantities_list[i]
+        shopping_cart_total += item_quantity_price
+        i += 1
+      else
+        item_quantity_price = value[0] * quantities_list[i]/1000
+        shopping_cart_total += item_quantity_price
+        i += 1
+      end
     end
   end
   shopping_cart_total.round(2)
