@@ -5,7 +5,7 @@ class Main_Interface
       puts ""
       puts "Enter 'single' to run a single-item search or enter 'list' to run a list-based search.".colorize(:green)
       mode_input = gets.chomp.downcase
-      if mode_input == 'single' || mode_input == 'list'
+      if mode_input == 'single' || mode_input == 'list' || mode_input == 'recipe'
         mode_is = mode_input
       else
         puts ""
