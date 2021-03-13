@@ -164,6 +164,9 @@ class List_Search_Interface
                 search_list.pop()
             elsif item_input == '='
                 proceed_to_quantities = true
+            elsif search_list.include? item_input
+                puts ""
+                puts "Error. Repeat entry of items is not allowed.".colorize(:red)
             else
                 search_list.push(item_input)
                 puts ""
@@ -301,7 +304,7 @@ class List_Search_Interface
             puts ""
             puts key.colorize(:color => :cyan, :background => :black)
             puts (value[0].to_s + value[1]).colorize(:color => :cyan, :background => :black)
-            puts "Value of this item in searched for quantity: €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:cyan)
+            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:cyan)
             i += 1
           end
         elsif input == "prisma"
@@ -310,7 +313,7 @@ class List_Search_Interface
             puts ""
             puts key.colorize(:color => :green, :background => :black)
             puts (value[0].to_s + value[1]).colorize(:color => :green, :background => :black)
-            puts "Value of this item in searched for quantity: €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:green)
+            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:green)
             i += 1
           end
         elsif input == "rimi"
@@ -319,7 +322,7 @@ class List_Search_Interface
             puts ""
             puts key.colorize(:color => :red, :background => :black)
             puts (value[0].to_s + value[1]).colorize(:color => :red, :background => :black)
-            puts "Value of this item in searched for quantity: €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:red)
+            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:red)
             i += 1
           end
         elsif input == "selver"
@@ -328,7 +331,7 @@ class List_Search_Interface
             puts ""
             puts key.colorize(:color => :white, :background => :black)
             puts (value[0].to_s + value[1]).colorize(:color => :white, :background => :black)
-            puts "Value of this item in searched for quantity: €#{(value[0] * quantities_list[i]/1000).round(2)}"
+            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}"
             i += 1
           end
         elsif input != 'new'
