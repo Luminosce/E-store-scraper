@@ -69,11 +69,10 @@ class Search
 end
 
 class BuildSearchUrl
-  RIMI_BASE_URL = "https://www.rimi.ee/epood/ee/otsing"
+  RIMI_BASE_URL = "https://www.rimi.ee/epood/ee/otsing?query="
 
   def self.forRimi(query)
-    url = URI(RIMI_BASE_URL)
-    url.query = URI.encode_www_form([["query", query ]])
+    url = RIMI_BASE_URL + query
     url
   end
 end

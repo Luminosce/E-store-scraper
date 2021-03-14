@@ -69,11 +69,10 @@ class Search
 end
 
 class BuildSearchUrl
-  COOP_BASE_URL = "https://ecoop.ee/et/otsing"
+  COOP_BASE_URL = "https://ecoop.ee/et/otsing?query="
 
   def self.forCoop(query)
-    url = URI(COOP_BASE_URL)
-    url.query = URI.encode_www_form([["query", query ]])
+    url = COOP_BASE_URL + query
     url
   end
 end

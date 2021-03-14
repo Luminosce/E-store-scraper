@@ -5,6 +5,7 @@ require_relative 'coop_methods.rb'
 require_relative 'prisma_methods.rb'
 require_relative 'selver_methods.rb'
 require_relative 'rimi_methods.rb'
+require_relative 'recipe_search_mode.rb'
 
 get '/' do
     "<div style='background-color:seagreen; height: 100vh; width: 100vw; text-align:center; position:absolute; top:0; left:0;'>

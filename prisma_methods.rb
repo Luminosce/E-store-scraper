@@ -122,8 +122,7 @@ class BuildSearchUrl
   PRISMA_BASE_URL = 'https://www.prismamarket.ee/products/search/'
 
   def self.forPrisma(query)
-    # url = URI(PRISMA_BASE_URL + query.split(' ').join('%20'))
-    url = PRISMA_BASE_URL + query.split(' ').join('%20')
+    url = PRISMA_BASE_URL + query
     url
   end
 end

@@ -1,3 +1,4 @@
+system 'chcp 1257' # Sets the Active Code Page to '1257 (to use Windows-1257 encoding to support Estonian characters)
 require_relative 'gem_requires'
 require_relative 'common_methods.rb'
 require_relative 'coop_methods.rb'

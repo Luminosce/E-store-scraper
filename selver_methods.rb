@@ -69,11 +69,10 @@ class Search
 end
 
 class BuildSearchUrl
-  SELVER_BASE_URL = "https://www.selver.ee/catalogsearch/result/"
+  SELVER_BASE_URL = "https://www.selver.ee/catalogsearch/result/?q="
 
   def self.forSelver(query)
-    url = URI(SELVER_BASE_URL)
-    url.query = URI.encode_www_form([["q", query ]])
+    url = SELVER_BASE_URL + query
     url
   end
 end

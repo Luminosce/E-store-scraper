@@ -8,16 +8,8 @@ GEM
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    mini_portile2 (2.5.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nokogiri (1.11.2)
-      mini_portile2 (~> 2.5.0)
-      racc (~> 1.4)
-    nokogiri (1.11.2-x64-mingw32)
-      racc (~> 1.4)
-    open-uri (0.1.0)
-    racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -37,7 +29,6 @@ GEM
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
     tilt (2.0.10)
-    uri (0.10.1)
 
 PLATFORMS
   ruby
@@ -45,12 +36,9 @@ PLATFORMS
 
 DEPENDENCIES
   colorize
-  nokogiri
-  open-uri
   rerun
   selenium-webdriver
   sinatra
-  uri
 
 BUNDLED WITH
    2.1.4

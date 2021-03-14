@@ -20,7 +20,8 @@ class Single_Search_Interface
   def get_search_input
     puts ""
     puts "Enter search term(s).".colorize(:green)
-    gets.chomp
+    search_input = gets.chomp.force_encoding("windows-1257").encode("utf-8", replace: nil)
+    search_input
   end
 
   def get_max_retrieve_input
@@ -157,7 +158,7 @@ class List_Search_Interface
         while proceed_to_quantities == false
             puts ""
             puts "Enter items to add to search list, enter '=' to proceed to entry of quantities, enter 'del' to delete last entered item, or enter 'reset' to reset the list.".colorize(:green)
-            item_input = gets.chomp
+            item_input = gets.chomp.force_encoding("windows-1257").encode("utf-8", replace: nil)
             if item_input.downcase == 'reset'
                 search_list = []
             elsif item_input.downcase == 'del'
