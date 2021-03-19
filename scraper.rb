@@ -5,6 +5,8 @@ require_relative 'coop_methods.rb'
 require_relative 'prisma_methods.rb'
 require_relative 'selver_methods.rb'
 require_relative 'rimi_methods.rb'
+require_relative 'interfaces.rb'
+require_relative 'modes.rb'
 require_relative 'recipe_search_mode.rb'
 
 interface = Main_Interface.new

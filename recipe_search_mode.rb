@@ -13,15 +13,15 @@ class Recipe
 end
 
 e1 = {             "punane riis" => 185,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "paprika" => 200,
                    "porgand" => 120,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "küüslauk" => 6,
                    "kuivatatud pune" => 3,
                    "jahvatatud vürtskoomned" => 4,
                    "tomat" => 400,
-                   "must aeduba" => 240,
+                   "mustad oad" => 240,
                    "aedviljapuljong" => 10,
                    "tume šokolaad" => 20,
                    "roheline sibul" => 15 }
@@ -35,7 +35,7 @@ t1 = {             "penne pasta" => 300,
 
 k1 = {             "külmutatud aeduba" => 400,
                    "punane sibul" => 300,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "tomat" => 300,
                    "kuivatatud pune" => 2,
                    "feta juust" => 125,
@@ -49,13 +49,13 @@ n1 = {             "spagetid" => 200,
                    "tomat" => 250,
                    "vahemere ürdisegu" => 2,
                    "või" => 25,
-                   "oliiviõli" => 25}
+                   "neitsioliiviõli" => 25}
 
 
 r1 = {             "seesamiõli" => 30,
                    "tofu" => 250,
                    "ingver" => 10,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "sojakaste" => 45,
                    "paprika" => 200,
                    "hiina kapsas" => 50,
@@ -67,7 +67,7 @@ r1 = {             "seesamiõli" => 30,
 
 l1 = {             "paprika" => 800,
                    "punane sibul" => 750,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "veini äädikas" => 20,
                    "pruun suhkur" => 40,
                    "kapparid" => 20,
@@ -77,7 +77,7 @@ p1 = {             "seesamiõli" => 15,
                    "ingver" => 10,
                    "küüslauk" => 8,
                    "sojakaste" => 15,
-                   "mirin" => 10,
+                   "riisiäädika" => 10,
                    "aedviljapuljong" => 20,
                    "šampinjonid" => 75,
                    "nuudlid" => 300,
@@ -89,22 +89,22 @@ p1 = {             "seesamiõli" => 15,
 # 2. nädal:
 
 e2 = {             "basmati riis" => 185,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "kookospiim" => 400,
                    "ingver" => 10,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "küüslauk" => 6,
-                   "jahvatatud kurkum" => 2,
-                   "jahvatatud vürtsköömned" => 2,
+                   "kurkum" => 2,
+                   "vürtsköömen" => 2,
                    "jahvatatud koriander" => 1,
                    "jahvatatud kaneel" => 2,
                    "aedviljapuljong" => 10,
                    "punased läätsed" => 150,
                    "laimimahl" => 10,
-                   "külmutatud spinat" => 50 }
+                   "hakitud spinat" => 50 }
 
 t2 = {             "penne pasta" => 300,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "küüslauk" => 4,
                    "tomat" => 250,
                    "rõõsk koor" => 200,
@@ -113,10 +113,10 @@ t2 = {             "penne pasta" => 300,
                    "maitsepärm" => 4 }
 
 k2 = {             "pruun riis" => 125,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "wokisegu" => 400,
                    "küüslauk" => 4,
-                   "jahvatatud vürtsköömned" => 4,
+                   "vürtsköömen" => 4,
                    "oad tomatikastmes" => 415,
                    "tomat" => 250,
                    "laimimahl" => 10 }
@@ -124,23 +124,23 @@ k2 = {             "pruun riis" => 125,
 
 n2 = {             "punased läätsed" => 125,
                    "ingver" => 10,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "küüslauk" => 2,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "aedviljapuljong" => 10,
-                   "jahvatatud kurkum" => 2,
+                   "kurkum" => 2,
                    "tomat" => 300,
                    "kookospiim" => 400 }
 
 r2 = {             "tatar" => 300,
                    "tomat" => 300,
                    "porrulauk" => 200,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "sojakaste" => 15,
-                   "mirin" => 15 }
+                   "riisiäädika" => 15 }
 
 l2 = {             "basmati riis" => 120,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "punane sibul" => 150,
                    "tomat" => 250,
                    "sakilised friikartulid" => 450,
@@ -152,8 +152,8 @@ l2 = {             "basmati riis" => 120,
                    "roheline sibul" => 20 }
 
 p2 = {             "külmutatud herned" => 600,
-                   "oliiviõli" => 30,
-                   "sibul" => 150,
+                   "neitsioliiviõli" => 30,
+                   "mugulsibul" => 150,
                    "küüslauk" => 4,
                    "hiina kapsas" => 100,
                    "aedviljapuljong" => 10,
@@ -167,13 +167,13 @@ e3 = {             "suvikõrvits" => 300,
                    "parmesan" => 80,
                    "risoto riis" => 250,
                    "aedviljapuljong" => 10,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "kuivatatud tüümian" => 4,
                    "päikesekuivatatud tomat" => 70,
                    "või" => 50}
 
 t3 = {             "penne pasta" => 300,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "punane sibul" => 100,
                    "paprika" => 200,
                    "mustad oliivid" => 110,
@@ -183,19 +183,19 @@ t3 = {             "penne pasta" => 300,
                    "kuivatatud pune" => 4,
                    "sidrun" => 60 }
 
-k3 = {             "sibul" => 150,
-                   "jahvatatud vürtsköömned" => 2,
-                   "oliiviõli" => 15,
+k3 = {             "mugulsibul" => 150,
+                   "vürtsköömen" => 2,
+                   "neitsioliiviõli" => 15,
                    "jahvatatud karri" => 4,
                    "punased läätsed" => 100,
-                   "maguskartul" => 400,
+                   "bataat" => 400,
                    "aedviljapuljong" => 10,
                    "tomat" => 200,
                    "kikerherned" => 400,
                    "jahvatatud koriander" => 2,
                    "kolme riisi segu" => 125 }
 
-n3 = {             "oliiviõli" => 15,
+n3 = {             "neitsioliiviõli" => 15,
                    "punane sibul" => 400,
                    "kartul" => 300,
                    "tomat" => 400,
@@ -207,14 +207,14 @@ r3 = {             "šampinjonid" => 125,
                    "pärlsibul" => 40,
                    "kuivatatud tüümian" => 2,
                    "või" => 20,
-                   "pitsapõhjapulber" => 400,
-                   "oliiviõli" => 50,
+                   "pitsapõhja" => 400,
+                   "neitsioliiviõli" => 50,
                    "tomatikaste ürtidega" => 250,
                    "riivjuust" => 100 }
 
-l3 = {             "täisteratortilja" => 320,
-                   "jääsalat" => 100,
-                   "oliiviõli" => 10,
+l3 = {             "täisteratortilla" => 320,
+                   "frillice" => 100,
+                   "neitsioliiviõli" => 10,
                    "paprika" => 400,
                    "oad tomatikastmes" => 415,
                    "punane sibul" => 100,
@@ -222,8 +222,8 @@ l3 = {             "täisteratortilja" => 320,
 
 p3 = {             "tofu" => 250,
                    "nuudlid" => 300,
-                   "oliiviõli" => 15,
-                   "sibul" => 150,
+                   "neitsioliiviõli" => 15,
+                   "mugulsibul" => 150,
                    "šampinjonid" => 125,
                    "tom kha supipasta" => 20,
                    "tomat" => 300,
@@ -237,10 +237,10 @@ e4 = {             "basmati riis" => 100,
                    "risoto riis" => 140,
                    "aedviljapuljong" => 5,
                    "või" => 50,
-                   "oliiviõli" => 10,
+                   "neitsioliiviõli" => 10,
                    "shimeji" => 175,
                    "seesamiseemned" => 10,
-                   "mirin" => 25,
+                   "riisiäädika" => 25,
                    "sojakaste" => 25,
                    "roheline sibul" => 20 }
 
@@ -253,7 +253,7 @@ t4 = {             "pärmi-lehttaigen" => 500,
 
 k4 = {             "nuudlid" => 300,
                    "seesamiõli" => 15,
-                   "sibul" => 150,
+                   "mugulsibul" => 150,
                    "küüslauk" => 6,
                    "ingver" => 10,
                    "jahvatatud kaneel" => 1,
@@ -266,7 +266,7 @@ k4 = {             "nuudlid" => 300,
                    "lehtsalat" => 100 }
 
 n4 = {             "spagetid" => 300,
-                   "oliiviõli" => 15,
+                   "neitsioliiviõli" => 15,
                    "küüslauk" => 4,
                    "tomat" => 800,
                    "kuivatatud pune" => 4,
@@ -274,14 +274,14 @@ n4 = {             "spagetid" => 300,
                    "maitsepärm" => 4,
                    "tomatikaste ürtidega" => 250 }
 
-r4 = {             "oliiviõli" => 15,
+r4 = {             "neitsioliiviõli" => 15,
                    "tomat" => 150,
-                   "sibul" => 150,
-                   "külmutatud spinat" => 150,
+                   "mugulsibul" => 150,
+                   "hakitud spinat" => 150,
                    "kikerherned" => 800,
-                   "jahvatatud vürtsköömned" => 2,
+                   "vürtsköömen" => 2,
                    "ingver" => 10,
-                   "jahvatatud kurkum" => 2,
+                   "kurkum" => 2,
                    "pruun riis" => 185 }
 
 l4 = {             "sojakaste" => 35,
@@ -290,17 +290,17 @@ l4 = {             "sojakaste" => 35,
                    "küüslauk" => 4,
                    "ingver" => 10,
                    "seesamiõli" => 15,
-                   "mirin" => 10,
+                   "riisiäädika" => 10,
                    "maisitärklis" => 4,
                    "apelsinimarmelaad" => 600,
                    "basmati riis" => 220 }
 
 p4 = {             "kartul" => 1000,
                    "küüslauk" => 8,
-                   "oliiviõli" => 30,
-                   "kuivatatud rosmariin" => 4,
+                   "neitsioliiviõli" => 30,
+                   "rosmariin" => 4,
                    "mustad oliivid" => 110,
-                   "pikk kurk" => 300,
+                   "kurk" => 300,
                    "tomat" => 250,
                    "punane sibul" => 100,
                    "õunaäädikas" => 5 }
@@ -338,7 +338,7 @@ P2 = Recipe.new("P2: kreemine hernesupp", p2)
 
 E3 = Recipe.new("E3: suvikõrvitsarisoto", e3)
 T3 = Recipe.new("T3: Kreeka pasta", t3)
-K3 = Recipe.new("K3: läätse-maguskartulikarri", k3)
+K3 = Recipe.new("K3: läätse-bataadikarri", k3)
 N3 = Recipe.new("N3: tomati-sibulasupp", n3)
 R3 = Recipe.new("R3: seene-jalapenopitsa", r3)
 L3 = Recipe.new("L3: riisi- ja oaburritod", l3)
@@ -352,9 +352,9 @@ R4 = Recipe.new("R4: palak chana", r4)
 L4 = Recipe.new("L4: apelsinikastmes tofu riisiga", l4)
 P4 = Recipe.new("P4: ahjukartulid rosmariini, oliivide ja värske salatiga", p4)
 
-class Recipe_Search_Interface
+class Recipe_Search_Interface < List_Search_Interface
 
-    def build_search_list
+    def build_recipe_search_list
         all_recipes = [E1, T1, K1, N1, R1, L1, P1, E2, T2, K2, N2, R2, L2, P2, E3, T3, K3, N3, R3, L3, P3, E4, T4, K4, N4, R4, L4, P4]
         search_list = []
         $quantities_list = []
@@ -450,157 +450,77 @@ class Recipe_Search_Interface
         end
         search_list
     end
-
-    def get_max_retrieve_input
-        max_retrieve_input = nil
-        while(max_retrieve_input.nil? || max_retrieve_input < 1)
-          puts ""
-          puts "Enter maximum number of results to retrieve for each item from each store. Must be at least 1. (Recommended: 5 to 10)".colorize(:green)
-          max_retrieve_input = gets.chomp.to_i
-          if max_retrieve_input < 1
-            puts ""
-            puts "Invalid input.".colorize(:red)
-          end
-        end
-        max_retrieve_input
-    end
-
-    def sort_and_display_list_search_results(coop_total, prisma_total, rimi_total, selver_total)
-      total_sorter = {}
-      display_coop_total = true
-      display_prisma_total = true
-      display_rimi_total = true
-      display_selver_total = true
-
-      if coop_total == 0
-        display_coop_total = false
-        puts ""
-        puts "Coop shopping cart total has been discarded from results, because one or more items were not found for Coop.".colorize(:red)
-      else
-        total_sorter["Coop shopping cart total:"] = coop_total
-      end
-
-      if prisma_total == 0
-        display_prisma_total = false
-        puts ""
-        puts "Prisma shopping cart total has been discarded from results, because one or more items were not found for Prisma.".colorize(:red)
-      else
-        total_sorter["Prisma shopping cart total:"] = prisma_total
-      end
-
-      if rimi_total == 0
-        display_rimi_total = false
-        puts ""
-        puts "Rimi shopping cart total has been discarded from results, because one or more items were not found for Rimi.".colorize(:red)
-      else
-        total_sorter["Rimi shopping cart total:"] = rimi_total
-      end
-
-      if selver_total == 0
-        display_selver_total = false
-        puts ""
-        puts "Selver shopping cart total has been discarded from results, because one or more items were not found for Selver.".colorize(:red)
-      else
-        total_sorter["Selver shopping cart total:"] = selver_total
-      end
-
-      total_sorter = total_sorter.sort_by{|key, value| value}.to_h
-
-      puts ""
-      puts "Displaying shopping cart totals in ascending order: ".colorize(:color => :cyan, :background => :black)
-      puts ''
-      puts '--Start of list--'.colorize(:color => :cyan, :background => :black)
-      puts ''
-
-      total_sorter.each do |key, value|
-        if key.include? 'Coop'
-          puts "#{key} €#{value}".colorize(:cyan)
-        elsif key.include? 'Prisma'
-          puts "#{key} €#{value}".colorize(:green)
-        elsif key.include? 'Rimi'
-          puts "#{key} €#{value}".colorize(:red)
-        elsif key.include? 'Selver'
-          puts "#{key} €#{value}"
-        end
-      end
-
-      puts ''
-      puts '--End of list--'.colorize(:color => :cyan, :background => :black)
-      puts ''
-    end
-
-    def display_detailed_list_search_results(coop_cheapest, prisma_cheapest, rimi_cheapest, selver_cheapest, quantities_list)
-      new_entered = false
-      while new_entered == false
-        puts ""
-        puts "Enter name of store to see detailed results for that store, or enter 'new' to run a new search.".colorize(:green)
-        input = gets.chomp.downcase
-        if input == "coop"
-          i = 0
-          coop_cheapest.each do |key, value|
-            puts ""
-            puts key.colorize(:color => :cyan, :background => :black)
-            puts (value[0].to_s + value[1]).colorize(:color => :cyan, :background => :black)
-            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:cyan)
-            i += 1
-          end
-        elsif input == "prisma"
-          i = 0
-          prisma_cheapest.each do |key, value|
-            puts ""
-            puts key.colorize(:color => :green, :background => :black)
-            puts (value[0].to_s + value[1]).colorize(:color => :green, :background => :black)
-            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:green)
-            i += 1
-          end
-        elsif input == "rimi"
-          i = 0
-          rimi_cheapest.each do |key, value|
-            puts ""
-            puts key.colorize(:color => :red, :background => :black)
-            puts (value[0].to_s + value[1]).colorize(:color => :red, :background => :black)
-            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}".colorize(:red)
-            i += 1
-          end
-        elsif input == "selver"
-          i = 0
-          selver_cheapest.each do |key, value|
-            puts ""
-            puts key.colorize(:color => :white, :background => :black)
-            puts (value[0].to_s + value[1]).colorize(:color => :white, :background => :black)
-            puts "Value of this item in searched for quantity (#{quantities_list[i]} g, ml, or pcs): €#{(value[0] * quantities_list[i]/1000).round(2)}"
-            i += 1
-          end
-        elsif input != 'new'
-          puts ""
-          puts "Invalid input.".colorize(:red)
-        else
-          new_entered = true
-        end
-      end
-    end
 end
-
 
 def recipe_search_mode(mode_is) # Hidden mode for personal use
   if mode_is == 'recipe'
     interface = Recipe_Search_Interface.new
 
-    search_list = interface.build_search_list
+    search_list = interface.build_recipe_search_list
     max_retrieve = interface.get_max_retrieve_input
 
-    coop_cheapest = List_Search.coop(search_list, max_retrieve)
-    prisma_cheapest = List_Search.prisma(search_list, max_retrieve)
-    selver_cheapest = List_Search.selver(search_list, max_retrieve)
-    rimi_cheapest = List_Search.rimi(search_list, max_retrieve)
+    coop_results = List_Search.coop(search_list, max_retrieve)
+    puts ""
+    puts "Coop full results: ".colorize(:green)
+    coop_results.each do |key, value|
+      puts(key)
+    end
+    prisma_results = List_Search.prisma(search_list, max_retrieve)
+    rimi_results = List_Search.rimi(search_list, max_retrieve)
+    selver_results = List_Search.selver(search_list, max_retrieve)
+
+    coop_cheapest = List_Search.found_cheapest_items_lister(coop_results)
+    prisma_cheapest = List_Search.found_cheapest_items_lister(prisma_results)
+    rimi_cheapest = List_Search.found_cheapest_items_lister(rimi_results)
+    selver_cheapest = List_Search.found_cheapest_items_lister(selver_results)
+
+    coop_missing = List_Search.missing_items_lister(coop_results)
+    prisma_missing = List_Search.missing_items_lister(prisma_results)
+    rimi_missing = List_Search.missing_items_lister(rimi_results)
+    selver_missing = List_Search.missing_items_lister(selver_results)
+
+    coop_successful_queries = List_Search.successful_query_lister(coop_missing, search_list)
+    puts ""
+    puts "Coop successful queries list: #{coop_successful_queries.join(', ')}".colorize(:green)
+    prisma_successful_queries = List_Search.successful_query_lister(prisma_missing, search_list)
+    rimi_successful_queries = List_Search.successful_query_lister(rimi_missing, search_list)
+    selver_successful_queries = List_Search.successful_query_lister(selver_missing, search_list)
+
+    coop_cheapest_items_names = cheapest_items_names_lister(coop_cheapest)
+    puts ""
+    puts "Coop cheapest items: ".colorize(:green)
+    coop_cheapest_items_names.each do |key, value|
+      puts(key)
+    end
+    prisma_cheapest_items_names = cheapest_items_names_lister(prisma_cheapest)
+    rimi_cheapest_items_names = cheapest_items_names_lister(rimi_cheapest)
+    selver_cheapest_items_names = cheapest_items_names_lister(selver_cheapest)
+
+    coop_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, coop_successful_queries)
+    puts ""
+    puts "Coop found items' quantities' list: #{coop_found_items_quantities.join(', ')}".colorize(:green)
+    prisma_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, prisma_successful_queries)
+    rimi_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, rimi_successful_queries)
+    selver_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, selver_successful_queries)
 
     coop_total = calculate_totals(coop_cheapest, $quantities_list)
     prisma_total = calculate_totals(prisma_cheapest, $quantities_list)
-    selver_total = calculate_totals(selver_cheapest, $quantities_list)
     rimi_total = calculate_totals(rimi_cheapest, $quantities_list)
+    selver_total = calculate_totals(selver_cheapest, $quantities_list)
+
+    coop_incomplete_total = calculate_incomplete_cart_totals(coop_cheapest, coop_found_items_quantities, $quantities_list)
+    prisma_incomplete_total = calculate_incomplete_cart_totals(prisma_cheapest, prisma_found_items_quantities, $quantities_list)
+    rimi_incomplete_total = calculate_incomplete_cart_totals(rimi_cheapest, rimi_found_items_quantities, $quantities_list)
+    selver_incomplete_total = calculate_incomplete_cart_totals(selver_cheapest, selver_found_items_quantities, $quantities_list)
 
     interface.sort_and_display_list_search_results(coop_total, prisma_total, rimi_total, selver_total)
-    interface.display_detailed_list_search_results(coop_cheapest, prisma_cheapest, rimi_cheapest, selver_cheapest, $quantities_list)
-    mode_is == nil
+    interface.display_detailed_list_search_results(coop_cheapest, prisma_cheapest, rimi_cheapest, selver_cheapest,
+                                                   coop_cheapest_items_names, prisma_cheapest_items_names, rimi_cheapest_items_names, selver_cheapest_items_names,
+                                                   coop_found_items_quantities, prisma_found_items_quantities, rimi_found_items_quantities, selver_found_items_quantities,
+                                                   coop_successful_queries, prisma_successful_queries, rimi_successful_queries, selver_successful_queries,
+                                                   coop_total, prisma_total, rimi_total, selver_total,
+                                                   coop_incomplete_total, prisma_incomplete_total, rimi_incomplete_total, selver_incomplete_total,
+                                                   coop_missing, prisma_missing, rimi_missing, selver_missing)
+    mode_is = nil
   end
 end

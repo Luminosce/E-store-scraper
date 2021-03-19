@@ -25,8 +25,10 @@ class Search
     url = BuildSearchUrl.forPrisma(query)
     driver.get(url)
 
+    retries = 0
+    failures = 0
     begin
-      wait = Selenium::WebDriver::Wait.new(:timeout => 1)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 2)
       wait.until { driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(1) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price") }
       for i in 0...max_retrieve do
         name_element = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.name")
@@ -34,7 +36,7 @@ class Search
         if name_element.displayed? && price_element.displayed?  # To handle hidden price elements separately
           name = name_element.text
           price = price_element.text
-          if (name.downcase.include? query.downcase) && price != ""
+          if name.downcase.include?(query.downcase) && price != ""
             names.push(name)
             prices.push(price)
           elsif price != ""
@@ -47,7 +49,7 @@ class Search
           price_element_3 = driver.find_element(:css, "div:nth-child(3) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.unit")
           name = name_element.text
           price = price_element_1.text + "," + price_element_2.text + " €" + price_element_3.text
-          if (name.downcase.include? query.downcase) && price.length > 3
+          if name.downcase.include?(query.downcase) && price.length > 3
             names.push(name)
             prices.push(price)
           elsif price.length > 3
@@ -56,10 +58,20 @@ class Search
           end
         end
       end
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      failures += 1
+      puts "Something went wrong. Will try again up to two times. Retries so far: #{retries}.".colorize(:red)
+      retry if (retries += 1) < 3
     rescue Selenium::WebDriver::Error::NoSuchElementError
     rescue Selenium::WebDriver::Error::TimeoutError
     end
 
+    if retries > 0 && failures < 3
+      puts "Retry was successful.".colorize(:green)
+    end
+
+    failures = 0
+    retries = 0
     begin
       if names.length < max_retrieve
         wait.until { driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(1) > div.info.relative.clear > div.price-and-quantity > div.unit-price.clear.js-comp-price") }
@@ -69,7 +81,7 @@ class Search
           if name_element.displayed? && price_element.displayed? # To handle hidden price elements separately
             name = name_element.text
             price = price_element.text
-            if (name.downcase.include? query.downcase) && price != ""
+            if name.downcase.include?(query.downcase) && price != ""
               names.push(name)
               prices.push(price)
             elsif price != ""
@@ -82,7 +94,7 @@ class Search
             price_element_3 = driver.find_element(:css, "div:nth-child(2) > ul > li:nth-child(#{i+1}) > div.info.relative.clear > div.price-and-quantity > div > div > span.unit")
             name = name_element.text
             price = price_element_1.text + "," + price_element_2.text + " €" + price_element_3.text
-            if (name.downcase.include? query.downcase) && price.length > 3
+            if name.downcase.include?(query.downcase) && price.length > 3
               names.push(name)
               prices.push(price)
             elsif price.length > 3
@@ -92,8 +104,16 @@ class Search
           end
         end
       end
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      failures += 1
+      puts "Something went wrong. Will try again up to two times. Retries so far: #{retries}.".colorize(:red)
+      retry if (retries += 1) < 3
     rescue Selenium::WebDriver::Error::NoSuchElementError
     rescue Selenium::WebDriver::Error::TimeoutError
+    end
+
+    if retries > 0 && failures < 3
+      puts "Retry was successful.".colorize(:green)
     end
 
     if names.length == 0 && names_low_relevance.length != 0
@@ -108,6 +128,8 @@ class Search
     if names.length == 0
       puts ""
       puts "No such items found for Prisma.".colorize(:red)
+      names.push("#{query} (not found)")
+      prices.push("99999,0 €/kg")
     else
       puts ""
       puts "Successfully retrieved #{names.length} result(s) from Prisma.".colorize(:cyan)
