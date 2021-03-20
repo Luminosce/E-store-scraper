@@ -1,7 +1,3 @@
-
-
-# I know this part is particularly bad code. Just wanted to get this in place quickly for personal use only.
-
 class Recipe
 
   attr_accessor :name, :ingredients
@@ -18,7 +14,7 @@ e1 = {             "punane riis" => 185,
                    "porgand" => 120,
                    "mugulsibul" => 150,
                    "küüslauk" => 6,
-                   "kuivatatud pune" => 3,
+                   "oregano" => 3,
                    "jahvatatud vürtskoomned" => 4,
                    "tomat" => 400,
                    "mustad oad" => 240,
@@ -30,14 +26,14 @@ t1 = {             "penne pasta" => 300,
                    "või" => 15,
                    "muna" => 2,
                    "parmesan" => 80,
-                   "rõõsk koor" => 200,
+                   "vahukoor" => 200,
                    "sidrun" => 120 }
 
 k1 = {             "külmutatud aeduba" => 400,
                    "punane sibul" => 300,
                    "neitsioliiviõli" => 15,
                    "tomat" => 300,
-                   "kuivatatud pune" => 2,
+                   "oregano" => 2,
                    "feta juust" => 125,
                    "basmati riis" => 185 }
 
@@ -107,7 +103,7 @@ t2 = {             "penne pasta" => 300,
                    "neitsioliiviõli" => 15,
                    "küüslauk" => 4,
                    "tomat" => 250,
-                   "rõõsk koor" => 200,
+                   "vahukoor" => 200,
                    "šampinjonid" => 175,
                    "jahvatatud kaneel" => 2,
                    "maitsepärm" => 4 }
@@ -157,7 +153,7 @@ p2 = {             "külmutatud herned" => 600,
                    "küüslauk" => 4,
                    "hiina kapsas" => 100,
                    "aedviljapuljong" => 10,
-                   "rõõsk koor" => 200,
+                   "vahukoor" => 200,
                    "india pähkel" => 50,
                    "maitsepärm" => 6 }
 
@@ -180,7 +176,7 @@ t3 = {             "penne pasta" => 300,
                    "tomat" => 125,
                    "feta juust" => 200,
                    "aedviljapuljong" => 5,
-                   "kuivatatud pune" => 4,
+                   "oregano" => 4,
                    "sidrun" => 60 }
 
 k3 = {             "mugulsibul" => 150,
@@ -269,7 +265,7 @@ n4 = {             "spagetid" => 300,
                    "neitsioliiviõli" => 15,
                    "küüslauk" => 4,
                    "tomat" => 800,
-                   "kuivatatud pune" => 4,
+                   "oregano" => 4,
                    "pruun suhkur" => 8,
                    "maitsepärm" => 4,
                    "tomatikaste ürtidega" => 250 }
@@ -357,7 +353,8 @@ class Recipe_Search_Interface < List_Search_Interface
     def build_recipe_search_list
         all_recipes = [E1, T1, K1, N1, R1, L1, P1, E2, T2, K2, N2, R2, L2, P2, E3, T3, K3, N3, R3, L3, P3, E4, T4, K4, N4, R4, L4, P4]
         search_list = []
-        $quantities_list = []
+        quantities_list = []
+        lists = []
         proceed_to_quantities = false
         while proceed_to_quantities == false
             puts ""
@@ -365,69 +362,69 @@ class Recipe_Search_Interface < List_Search_Interface
             recipe_input = gets.chomp.downcase
             if recipe_input == 'reset'
                 search_list = []
-                $quantities_list = []
+                quantities_list = []
             elsif recipe_input == '='
                 proceed_to_quantities = true
             elsif recipe_input == 'w1'
               $w1.each do |key, value|
-                if search_list.include? key
+                if search_list.include?(key)
                   index = search_list.index(key)
-                  $quantities_list[index] += value
+                  quantities_list[index] += value
                 else
                   search_list.push(key)
-                  $quantities_list.push(value)
+                  quantities_list.push(value)
                 end
               end
             elsif recipe_input == 'w2'
               $w2.each do |key, value|
-                if search_list.include? key
+                if search_list.include?(key)
                   index = search_list.index(key)
-                  $quantities_list[index] += value
+                  quantities_list[index] += value
                 else
                   search_list.push(key)
-                  $quantities_list.push(value)
+                  quantities_list.push(value)
                 end
               end
             elsif recipe_input == 'w3'
               $w3.each do |key, value|
-                if search_list.include? key
+                if search_list.include?(key)
                   index = search_list.index(key)
-                  $quantities_list[index] += value
+                  quantities_list[index] += value
                 else
                   search_list.push(key)
-                  $quantities_list.push(value)
+                  quantities_list.push(value)
                 end
               end
             elsif recipe_input == 'w4'
               $w4.each do |key, value|
-                if search_list.include? key
+                if search_list.include?(key)
                   index = search_list.index(key)
-                  $quantities_list[index] += value
+                  quantities_list[index] += value
                 else
                   search_list.push(key)
-                  $quantities_list.push(value)
+                  quantities_list.push(value)
                 end
               end
             elsif recipe_input == 'mth'
               $mth.each do |key, value|
-                if search_list.include? key
+                if search_list.include?(key)
                   index = search_list.index(key)
-                  $quantities_list[index] += value
+                  quantities_list[index] += value
                 else
                   search_list.push(key)
-                  $quantities_list.push(value)
+                  quantities_list.push(value)
                 end
               end
             else
               all_recipes.each do |recipe|
                 if (recipe_input.include?("1") || recipe_input.include?("2") || recipe_input.include?("3") || recipe_input.include?("4")) && recipe.name.downcase.include?(recipe_input)
                   recipe.ingredients.each do |key, value|
-                    if search_list.include? key
+                    if search_list.include?(key)
                       index = search_list.index(key)
-                      $quantities_list[index] += value
+                      quantities_list[index] += value
                     else
                       search_list.push(key)
-                      $quantities_list.push(value)
+                      quantities_list.push(value)
                     end
                   end
                   puts "Search list successfully updated with ingredients from recipe #{recipe.name}.".colorize(:cyan)
@@ -442,13 +439,15 @@ class Recipe_Search_Interface < List_Search_Interface
               else
                 numerator = 0
                 search_list.each do |item|
-                  puts "#{numerator+1}. #{item.capitalize} (#{$quantities_list[numerator]})"
+                  puts "#{numerator+1}. #{item.capitalize} (#{quantities_list[numerator]})"
                   numerator += 1
                 end
               end
             end
         end
-        search_list
+        lists.push(search_list)
+        lists.push(quantities_list)
+        lists
     end
 end
 
@@ -456,15 +455,12 @@ def recipe_search_mode(mode_is) # Hidden mode for personal use
   if mode_is == 'recipe'
     interface = Recipe_Search_Interface.new
 
-    search_list = interface.build_recipe_search_list
+    lists = interface.build_recipe_search_list
+    search_list = lists[0]
+    quantities_list = lists[1]
     max_retrieve = interface.get_max_retrieve_input
 
     coop_results = List_Search.coop(search_list, max_retrieve)
-    puts ""
-    puts "Coop full results: ".colorize(:green)
-    coop_results.each do |key, value|
-      puts(key)
-    end
     prisma_results = List_Search.prisma(search_list, max_retrieve)
     rimi_results = List_Search.rimi(search_list, max_retrieve)
     selver_results = List_Search.selver(search_list, max_retrieve)
@@ -480,38 +476,29 @@ def recipe_search_mode(mode_is) # Hidden mode for personal use
     selver_missing = List_Search.missing_items_lister(selver_results)
 
     coop_successful_queries = List_Search.successful_query_lister(coop_missing, search_list)
-    puts ""
-    puts "Coop successful queries list: #{coop_successful_queries.join(', ')}".colorize(:green)
     prisma_successful_queries = List_Search.successful_query_lister(prisma_missing, search_list)
     rimi_successful_queries = List_Search.successful_query_lister(rimi_missing, search_list)
     selver_successful_queries = List_Search.successful_query_lister(selver_missing, search_list)
 
     coop_cheapest_items_names = cheapest_items_names_lister(coop_cheapest)
-    puts ""
-    puts "Coop cheapest items: ".colorize(:green)
-    coop_cheapest_items_names.each do |key, value|
-      puts(key)
-    end
     prisma_cheapest_items_names = cheapest_items_names_lister(prisma_cheapest)
     rimi_cheapest_items_names = cheapest_items_names_lister(rimi_cheapest)
     selver_cheapest_items_names = cheapest_items_names_lister(selver_cheapest)
 
-    coop_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, coop_successful_queries)
-    puts ""
-    puts "Coop found items' quantities' list: #{coop_found_items_quantities.join(', ')}".colorize(:green)
-    prisma_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, prisma_successful_queries)
-    rimi_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, rimi_successful_queries)
-    selver_found_items_quantities = found_items_quantities_lister(search_list, $quantities_list, selver_successful_queries)
+    coop_found_items_quantities = found_items_quantities_lister(search_list, quantities_list, coop_successful_queries)
+    prisma_found_items_quantities = found_items_quantities_lister(search_list, quantities_list, prisma_successful_queries)
+    rimi_found_items_quantities = found_items_quantities_lister(search_list, quantities_list, rimi_successful_queries)
+    selver_found_items_quantities = found_items_quantities_lister(search_list, quantities_list, selver_successful_queries)
 
-    coop_total = calculate_totals(coop_cheapest, $quantities_list)
-    prisma_total = calculate_totals(prisma_cheapest, $quantities_list)
-    rimi_total = calculate_totals(rimi_cheapest, $quantities_list)
-    selver_total = calculate_totals(selver_cheapest, $quantities_list)
+    coop_total = calculate_totals(coop_cheapest, quantities_list)
+    prisma_total = calculate_totals(prisma_cheapest, quantities_list)
+    rimi_total = calculate_totals(rimi_cheapest, quantities_list)
+    selver_total = calculate_totals(selver_cheapest, quantities_list)
 
-    coop_incomplete_total = calculate_incomplete_cart_totals(coop_cheapest, coop_found_items_quantities, $quantities_list)
-    prisma_incomplete_total = calculate_incomplete_cart_totals(prisma_cheapest, prisma_found_items_quantities, $quantities_list)
-    rimi_incomplete_total = calculate_incomplete_cart_totals(rimi_cheapest, rimi_found_items_quantities, $quantities_list)
-    selver_incomplete_total = calculate_incomplete_cart_totals(selver_cheapest, selver_found_items_quantities, $quantities_list)
+    coop_incomplete_total = calculate_incomplete_cart_totals(coop_cheapest, coop_found_items_quantities, quantities_list)
+    prisma_incomplete_total = calculate_incomplete_cart_totals(prisma_cheapest, prisma_found_items_quantities, quantities_list)
+    rimi_incomplete_total = calculate_incomplete_cart_totals(rimi_cheapest, rimi_found_items_quantities, quantities_list)
+    selver_incomplete_total = calculate_incomplete_cart_totals(selver_cheapest, selver_found_items_quantities, quantities_list)
 
     interface.sort_and_display_list_search_results(coop_total, prisma_total, rimi_total, selver_total)
     interface.display_detailed_list_search_results(coop_cheapest, prisma_cheapest, rimi_cheapest, selver_cheapest,

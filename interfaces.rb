@@ -249,16 +249,16 @@ class List_Search_Interface
         input = gets.chomp.downcase
         if input == "coop"
           i = 0
-          coop_cheapest.each do |key, value|
+          coop_cheapest.each do |item|
             puts ""
             puts "#{i+1}. Cheapest item found in Coop's search results for '#{coop_successful_queries[i]}':".colorize(:color => :cyan, :background => :black)
             puts coop_cheapest_items_names[i].colorize(:cyan)
-            puts (value[0].to_s + value[1]).colorize(:cyan)
+            puts (item[1].to_s + item[2]).colorize(:cyan)
             puts "Value of this item in searched for quantity (#{coop_found_items_quantities[i]} g, ml, or pcs): ".colorize(:color => :cyan, :background => :black)
-            if value[1].include?('tk') || value[1].include?('pcs')
-              puts "€#{(value[0] * coop_found_items_quantities[i]).round(2)}".colorize(:color => :cyan, :background => :black)
+            if item[2].include?('tk') || item[2].include?('pcs')
+              puts "€#{(item[1] * coop_found_items_quantities[i]).round(2)}".colorize(:color => :cyan, :background => :black)
             else
-              puts "€#{(value[0] * coop_found_items_quantities[i]/1000).round(2)}".colorize(:color => :cyan, :background => :black)
+              puts "€#{(item[1] * coop_found_items_quantities[i]/1000).round(2)}".colorize(:color => :cyan, :background => :black)
             end
             i += 1
           end
@@ -275,16 +275,16 @@ class List_Search_Interface
           end
         elsif input == "prisma"
           i = 0
-          prisma_cheapest.each do |key, value|
+          prisma_cheapest.each do |item|
             puts ""
             puts "#{i+1}. Cheapest item found in Prisma's search results for '#{prisma_successful_queries[i]}':".colorize(:color => :green, :background => :black)
             puts prisma_cheapest_items_names[i].colorize(:green)
-            puts (value[0].to_s + value[1]).colorize(:green)
+            puts (item[1].to_s + item[2]).colorize(:green)
             puts "Value of this item in searched for quantity (#{prisma_found_items_quantities[i]} g, ml, or pcs): ".colorize(:color => :green, :background => :black)
-            if value[1].include?('tk') || value[1].include?('pcs')
-              puts "€#{(value[0] * prisma_found_items_quantities[i]).round(2)}".colorize(:color => :green, :background => :black)
+            if item[2].include?('tk') || item[2].include?('pcs')
+              puts "€#{(item[1] * prisma_found_items_quantities[i]).round(2)}".colorize(:color => :green, :background => :black)
             else
-              puts "€#{(value[0] * prisma_found_items_quantities[i]/1000).round(2)}".colorize(:color => :green, :background => :black)
+              puts "€#{(item[1] * prisma_found_items_quantities[i]/1000).round(2)}".colorize(:color => :green, :background => :black)
             end
             i += 1
           end
@@ -301,16 +301,16 @@ class List_Search_Interface
           end
         elsif input == "rimi"
           i = 0
-          rimi_cheapest.each do |key, value|
+          rimi_cheapest.each do |item|
             puts ""
             puts "#{i+1}. Cheapest item found in Rimi's search results for '#{rimi_successful_queries[i]}':".colorize(:color => :red, :background => :black)
             puts rimi_cheapest_items_names[i].colorize(:red)
-            puts (value[0].to_s + value[1]).colorize(:red)
+            puts (item[1].to_s + item[2]).colorize(:red)
             puts "Value of this item in searched for quantity (#{rimi_found_items_quantities[i]} g, ml, or pcs): ".colorize(:color => :red, :background => :black)
-            if value[1].include?('tk') || value[1].include?('pcs')
-              puts "€#{(value[0] * rimi_found_items_quantities[i]).round(2)}".colorize(:color => :red, :background => :black)
+            if item[2].include?('tk') || item[2].include?('pcs')
+              puts "€#{(item[1] * rimi_found_items_quantities[i]).round(2)}".colorize(:color => :red, :background => :black)
             else
-              puts "€#{(value[0] * rimi_found_items_quantities[i]/1000).round(2)}".colorize(:color => :red, :background => :black)
+              puts "€#{(item[1] * rimi_found_items_quantities[i]/1000).round(2)}".colorize(:color => :red, :background => :black)
             end
             i += 1
           end
@@ -327,16 +327,16 @@ class List_Search_Interface
           end
         elsif input == "selver"
           i = 0
-          selver_cheapest.each do |key, value|
+          selver_cheapest.each do |item|
             puts ""
             puts "#{i+1}. Cheapest item found in Selver's search results for '#{selver_successful_queries[i]}':".colorize(:color => :white, :background => :black)
             puts selver_cheapest_items_names[i]
-            puts (value[0].to_s + value[1])
+            puts (item[1].to_s + item[2])
             puts "Value of this item in searched for quantity (#{selver_found_items_quantities[i]} g, ml, or pcs): ".colorize(:color => :white, :background => :black)
-            if value[1].include?('tk') || value[1].include?('pcs')
-              puts "€#{(value[0] * selver_found_items_quantities[i]).round(2)}".colorize(:color => :white, :background => :black)
+            if item[2].include?('tk') || item[2].include?('pcs')
+              puts "€#{(item[1] * selver_found_items_quantities[i]).round(2)}".colorize(:color => :white, :background => :black)
             else
-              puts "€#{(value[0] * selver_found_items_quantities[i]/1000).round(2)}".colorize(:color => :white, :background => :black)
+              puts "€#{(item[1] * selver_found_items_quantities[i]/1000).round(2)}".colorize(:color => :white, :background => :black)
             end
             i += 1
           end
